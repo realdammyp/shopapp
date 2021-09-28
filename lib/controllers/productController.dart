@@ -4,17 +4,11 @@ import 'package:shopapp/models/productModel.dart';
 
 import '../services/database.dart';
 
-
-
 class ProductController extends GetxController {
   RxList<ProductModel> products = <ProductModel>[].obs;
-  RxString newProductID =''.obs;
+  RxString newProductID = ''.obs;
   RxBool isloading = false.obs;
-  RxString currentdBPath =''.obs;
- 
-
-
-  
+  RxString currentdBPath = ''.obs;
 
   // ignore: must_call_super
   void onInit() {
@@ -33,26 +27,4 @@ class ProductController extends GetxController {
       print(isloading.value);
     }
   }
-
-  void delete(String id) {
-    Database().deleteItem(id, currentdBPath.value);
-  }
-
-  //upload image, get downloard url then update Image url field
-  // Future uploadImage() async {
-  //   PickMethod()
-
-  //   if (image == null) {
-  //     print('empty');
-  //   }
-
-  //   filePath = File(image.path);
-  //   // final pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-  //   // file = pickedImage.path;
-  //   //await Database().uploadImage(filePath);
-  //   print(filePath);
-
-  //   update();
-  //   // Database().uploadImage(imagePath);
-  // }
 }
