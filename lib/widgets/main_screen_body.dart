@@ -43,7 +43,6 @@ class MainScreenBody extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      
                       Text(
                         productController.products[index].name.toString(),
                         style: TextStyle(fontSize: 20.0),
@@ -53,15 +52,15 @@ class MainScreenBody extends StatelessWidget {
                             try {
                               //
                               cartController.addtoCart(CartModel(
-                                // price: 4,
-                                // productID: '1221',
-                                // productName: 'choc',
-                                // quantity: 1,
-                                price: productController.products[index].price,
-                                productID: productController.products[index].id,
-                                productName:
-                                    productController.products[index].name,
+                                price: 4,
+                                productID: '1221',
+                                productName: 'choc',
                                 quantity: 1,
+                                // price: productController.products[index].price,
+                                // productID: productController.products[index].id,
+                                // productName:
+                                //     productController.products[index].name,
+                                // quantity: 1,
                               ));
                             } catch (e) {
                               print(e);
