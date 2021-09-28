@@ -8,12 +8,10 @@ import 'package:shopapp/controllers/cartController.dart';
 import 'package:shopapp/controllers/productController.dart';
 
 class MainScreenBody extends StatelessWidget {
-  //MainScreenBody({Key key}) : super(key: key);
-  CartController cartController = Get.find();
+  MainScreenBody({Key key}) : super(key: key);
+  final CartController cartController = Get.find();
 
-  MainScreenBody({
-    Key key,
-  }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +50,11 @@ class MainScreenBody extends StatelessWidget {
                             try {
                               //
                               cartController.addtoCart(CartModel(
-                                price: 4,
-                                productID: '1221',
-                                productName: 'choc',
+                                price: productController.products[index].price,
+                                productID: productController.products[index].id,
+                                productName:
+                                    productController.products[index].name,
                                 quantity: 1,
-                                // price: productController.products[index].price,
-                                // productID: productController.products[index].id,
-                                // productName:
-                                //     productController.products[index].name,
-                                // quantity: 1,
                               ));
                             } catch (e) {
                               print(e);

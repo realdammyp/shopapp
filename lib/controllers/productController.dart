@@ -17,7 +17,7 @@ class ProductController extends GetxController {
   }
 
   void changeCatergory(String path) {
-    currentdBPath.value = path as String;
+    currentdBPath.value = path;
     products.bindStream(Database().getprod(path));
     if (products.length < 0) {
       isloading.value = true;

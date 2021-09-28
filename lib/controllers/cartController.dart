@@ -17,25 +17,41 @@ class CartModel {
 }
 
 class CartController extends GetxController {
-  RxList<CartModel> onCart = <CartModel>[].obs;
+  List<CartModel> onCart = <CartModel>[].obs;
+
+  Map<String, CartModel> _items = {};
+
+  Map<String, CartModel> get items {
+    return {..._items};
+  }
 
   void addtoCart(CartModel item) {
     if (onCart.any((element) => element.productID == item.productID)) {
-      try {
-         item.quantity += 1;
-        onCart[onCart.indexOf(item)] = item;
-      } catch (er) {
-        print(er);
-      }
-      onCart.forEach((element) {
-        print(element.quantity);
-      });
+      item.quantity = item.quantity + 1;
+      onCart[onCart.indexOf(item)] = item;
     } else {
       onCart.add(item);
-      print('added to car');
     }
   }
+  // for (var v in onCart) {
+  //   try {
+  //     if (v.productID == item.productID) {
+  //       item.quantity = item.quantity + 1;
+  //       var index = onCart.indexOf(v);
+  //       onCart[index] = item;
+  //       //cart[cart.indexOf(product)] = product;
+  //       print('added succs');
+  //     } else {
+  //       onCart.add(item);
+  //       print('added');
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   //display added items from database
-  void displayItems() {}
+  void displayItems() {
+    print(items['qUBI4rw4bpzdnUINQ5wz'].toString());
+  }
 }

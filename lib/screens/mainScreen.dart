@@ -8,7 +8,7 @@ class MainScreen extends StatelessWidget {
   MainScreen({Key key}) : super(key: key);
 
   final ProductController productController = Get.find();
-  final CartController cartController = Get.put(CartController());
+  
   
   @override
   Widget build(BuildContext context) {
