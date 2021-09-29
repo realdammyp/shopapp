@@ -8,27 +8,23 @@ class MainScreen extends StatelessWidget {
   MainScreen({Key key}) : super(key: key);
 
   final ProductController productController = Get.find();
-  
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(left: 10, bottom: 30),
+              padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
                 "Wanipala's Bakery",
-                style: TextStyle(fontSize: 40),
+                style: TextStyle(fontSize: 35),
               ),
             ),
             //Promo
-            const SizedBox(
-              height: 5,
-            ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -77,21 +73,26 @@ class Catogory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TextButton(
-        style: ButtonStyle(
-          padding: MaterialStateProperty.all<EdgeInsets>(
-            const EdgeInsets.all(10),
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-              side: const BorderSide(color: Colors.black),
-            ),
-          ),
-        ),
+        // style: ButtonStyle(
+        //   padding: MaterialStateProperty.all<EdgeInsets>(
+        //     const EdgeInsets.all(10),
+        //   ),
+        //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        //     RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.circular(18.0),
+        //       side: const BorderSide(color: Colors.black),
+        //     ),
+        //   ),
+        // ),
         onPressed: () {
           func.call();
         },
-        child: Text(name),
+        child: Text(
+          name,
+          style: TextStyle(
+            fontSize: 15,
+          ),
+        ),
       ),
     );
   }

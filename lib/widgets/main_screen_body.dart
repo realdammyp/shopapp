@@ -11,8 +11,6 @@ class MainScreenBody extends StatelessWidget {
   MainScreenBody({Key key}) : super(key: key);
   final CartController cartController = Get.find();
 
-
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -39,12 +37,13 @@ class MainScreenBody extends StatelessWidget {
                     ),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         productController.products[index].name.toString(),
                         style: TextStyle(fontSize: 20.0),
                       ),
+                      Text('Add to Cart'),
                       GestureDetector(
                           onTap: () {
                             try {

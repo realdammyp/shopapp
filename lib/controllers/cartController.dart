@@ -17,13 +17,7 @@ class CartModel {
 }
 
 class CartController extends GetxController {
-  List<CartModel> onCart = <CartModel>[].obs;
-
-  Map<String, CartModel> _items = {};
-
-  Map<String, CartModel> get items {
-    return {..._items};
-  }
+  RxList<CartModel> onCart = <CartModel>[].obs;
 
   void addtoCart(CartModel item) {
     if (onCart.any((element) => element.productID == item.productID)) {
@@ -51,7 +45,5 @@ class CartController extends GetxController {
   // }
 
   //display added items from database
-  void displayItems() {
-    print(items['qUBI4rw4bpzdnUINQ5wz'].toString());
-  }
+  void displayItems() {}
 }

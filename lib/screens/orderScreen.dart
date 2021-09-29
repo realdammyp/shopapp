@@ -8,21 +8,25 @@ class OrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController prtController = Get.find();
 
-  //generate a list in this screen
+    //generate a list in this screen
     return Scaffold(
-      body:  Obx(
+      body: Obx(
         () => ListView.builder(
           itemCount: prtController.onCart.length,
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
             return Card(
-              child: Text(prtController.onCart[index].productID ?? 'empty list'),
+              child: Column(
+                children: [
+                  Text(prtController.onCart[index].productID),
+                  Text(prtController.onCart[index].quantity.toString()),
+                  Text(prtController.onCart[index].productName)
+                ],
+              ),
             );
           },
         ),
       ),
     );
-
-   
   }
 }
