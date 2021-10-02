@@ -8,7 +8,6 @@ import 'package:shopapp/controllers/cartController.dart';
 import 'package:shopapp/controllers/productController.dart';
 
 class MainScreenBody extends StatelessWidget {
-  MainScreenBody({Key key}) : super(key: key);
   final CartController cartController = Get.find();
 
   @override
@@ -46,18 +45,16 @@ class MainScreenBody extends StatelessWidget {
                       Text('Add to Cart'),
                       GestureDetector(
                           onTap: () {
-                            try {
-                              //
-                              cartController.addtoCart(CartModel(
-                                price: productController.products[index].price,
-                                productID: productController.products[index].id,
-                                productName:
-                                    productController.products[index].name,
-                                quantity: 1,
-                              ));
-                            } catch (e) {
-                              print(e);
-                            }
+                            //try {
+                            //
+                            cartController.addtoCart(CartModel(
+                              price: productController.products[index].price,
+                              productID: productController.products[index].id,
+                              productName:
+                                  productController.products[index].name,
+                              quantity: 1,
+                            ));
+                            //
                           },
                           child: Icon(Icons.shopping_cart_outlined)),
                     ],

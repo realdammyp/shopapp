@@ -13,12 +13,12 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     DashboardController dcontroller = Get.find();
 
-    return GetBuilder<DashboardController>(
+    return GetX<DashboardController>(
       builder: (dcontroller) {
         return Scaffold(
           body: SafeArea(
             child: IndexedStack(
-              index: dcontroller.index,
+              index: dcontroller.index.value,
               children: [
                 MainScreen(),
                 OrderScreen(),
@@ -29,7 +29,7 @@ class DashboardScreen extends StatelessWidget {
             unselectedItemColor: Colors.black,
             selectedItemColor: Colors.redAccent,
             onTap: dcontroller.changeTabIndex,
-            currentIndex: dcontroller.index,
+            currentIndex: dcontroller.index.value,
             showSelectedLabels: false,
             showUnselectedLabels: false,
             type: BottomNavigationBarType.fixed,

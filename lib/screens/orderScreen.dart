@@ -15,7 +15,12 @@ class OrderScreen extends StatelessWidget {
           itemCount: prtController.onCart.length,
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
-            return Card(
+            return Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.red,
+              ),
+              height: 100,
               child: Column(
                 children: [
                   Text(prtController.onCart[index].productID),

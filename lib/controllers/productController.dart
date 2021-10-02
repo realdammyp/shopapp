@@ -16,8 +16,8 @@ class ProductController extends GetxController {
     products.bindStream(Database().getprod('macarons'));
   }
 
-  void changeCatergory(String path) {
-    currentdBPath.value = path;
-    products.bindStream(Database().getprod(path));
+  Future<void> changeCatergory(String path) async {
+     currentdBPath.value = path;
+     products.bindStream(Database().getprod(path));
   }
 }

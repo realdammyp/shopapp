@@ -7,42 +7,39 @@ class CartModel {
   String productName;
   int quantity;
   int price;
+  String url;
 
   CartModel({
     this.price,
     this.productID,
     this.productName,
     this.quantity,
+    this.url,
   });
 }
 
 class CartController extends GetxController {
-  RxList<CartModel> onCart = <CartModel>[].obs;
+  final RxList<CartModel> onCart = <CartModel>[].obs;
 
-  void addtoCart(CartModel item) {
+  void addtoCart(CartModel item) async {
     if (onCart.any((element) => element.productID == item.productID)) {
-      item.quantity = item.quantity + 1;
-      onCart[onCart.indexOf(item)] = item;
+      print(item.quantity);
+      var updatedModel = CartModel(
+        price: item.price,
+        productID: item.productID,
+        quantity: item.quantity + 1,
+        productName: item.productName,
+      );
+
+      print('updated  ${updatedModel.quantity}');
+
+      onCart[onCart.indexOf(item)] = updatedModel;
+      update();
     } else {
       onCart.add(item);
+      update();
     }
   }
-  // for (var v in onCart) {
-  //   try {
-  //     if (v.productID == item.productID) {
-  //       item.quantity = item.quantity + 1;
-  //       var index = onCart.indexOf(v);
-  //       onCart[index] = item;
-  //       //cart[cart.indexOf(product)] = product;
-  //       print('added succs');
-  //     } else {
-  //       onCart.add(item);
-  //       print('added');
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
 
   //display added items from database
   void displayItems() {}
