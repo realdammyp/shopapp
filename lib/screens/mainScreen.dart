@@ -73,24 +73,23 @@ class Catogory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TextButton(
-        // style: ButtonStyle(
-        //   padding: MaterialStateProperty.all<EdgeInsets>(
-        //     const EdgeInsets.all(10),
-        //   ),
-        //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        //     RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(18.0),
-        //       side: const BorderSide(color: Colors.black),
-        //     ),
-        //   ),
-        // ),
         onPressed: () {
           func.call();
         },
-        child: Text(
-          name,
-          style: TextStyle(
-            fontSize: 15,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: Colors.black,
+                width: 0.5,
+              ),
+            ),
+          ),
+          child: Text(
+            name,
+            style: TextStyle(
+              fontSize: 15,
+            ),
           ),
         ),
       ),

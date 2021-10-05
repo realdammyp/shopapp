@@ -21,23 +21,28 @@ class CartModel {
 class CartController extends GetxController {
   final RxList<CartModel> onCart = <CartModel>[].obs;
 
+  List<CartModel> tempCart = <CartModel>[];
+
   void addtoCart(CartModel item) async {
+    if (onCart.contains(item.productID)) {
+      var insex = onCart.indexOf(item);
+    }
+
+    //i need to find the index of the element on cart
     if (onCart.any((element) => element.productID == item.productID)) {
-      print(item.quantity);
-      var updatedModel = CartModel(
-        price: item.price,
-        productID: item.productID,
-        quantity: item.quantity + 1,
-        productName: item.productName,
-      );
+      var model =
+          onCart.firstWhere((elementd) => elementd.productID == item.productID);
+      var index =
+          onCart.indexWhere((elementd) => elementd.productID == item.productID);
 
-      print('updated  ${updatedModel.quantity}');
+      model.quantity = model.quantity + 1;
 
-      onCart[onCart.indexOf(item)] = updatedModel;
-      update();
+      onCart[index] = model;
+
+      print('2nd ad  ${model.quantity}');
     } else {
       onCart.add(item);
-      update();
+      print('added 1st time');
     }
   }
 
