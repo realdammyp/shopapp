@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shopapp/controllers/cartController.dart';
 import 'package:shopapp/controllers/productController.dart';
-import 'package:shopapp/widgets/main_screen_body.dart';
+import 'package:shopapp/screens/mainScreen/widgets/main_screen_body.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({Key key}) : super(key: key);
@@ -19,7 +18,7 @@ class MainScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
-                "Wanipala's Bakery",
+                " Bakery",
                 style: TextStyle(fontSize: 35),
               ),
             ),

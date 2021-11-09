@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
@@ -59,8 +57,6 @@ class MainScreenBody extends StatelessWidget {
                           child: Icon(Icons.shopping_cart_outlined)),
                     ],
                   ),
-
-                  // Text(productController.products[index].name.toString()),
                 ],
               );
             },

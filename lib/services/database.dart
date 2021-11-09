@@ -1,14 +1,12 @@
 // we handle all communcations to and from to firebase
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:shopapp/models/productModel.dart';
 
 class Database extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  
 
   //stream from database
   Stream<List<ProductModel>> getprod(String path) {
@@ -20,13 +18,5 @@ class Database extends GetxController {
       });
       return retVal;
     });
-  }
-
-  Future<void> deleteItem(String productID, String path) async {
-    try {
-      await _firestore.collection(path).doc(productID).delete();
-    } catch (e) {
-      print(e);
-    }
   }
 }
