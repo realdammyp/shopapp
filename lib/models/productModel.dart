@@ -6,13 +6,14 @@ class ProductModel {
   int price;
   String imageurl;
 
-  ProductModel(
-      {this.id,
-      this.name,
-      this.price,
-      this.imageurl,
-      this.description,
-      this.flavor});
+  ProductModel({
+    this.id,
+    this.name,
+    this.price,
+    this.imageurl,
+    this.description,
+    this.flavor,
+  });
 
   ProductModel.fromJson(
     Map<String, dynamic> prod,

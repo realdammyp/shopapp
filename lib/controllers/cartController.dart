@@ -12,7 +12,7 @@ class CartModel {
   String productID;
   String productName;
   int quantity;
-  int price;
+  final int price;
   String url;
   String orderPrimaryKey;
 
@@ -24,6 +24,10 @@ class CartModel {
     this.url,
     this.orderPrimaryKey,
   });
+
+  set p(int p) {
+    p = price;
+  }
 }
 
 @override
@@ -33,6 +37,7 @@ class CartController extends GetxController {
   final RxList<CartModel> onCart = <CartModel>[].obs;
   Map<String, dynamic> _paymentIntent;
   String amount = '10000';
+  RxInt totalamount = 0.obs;
 
   void addtoCart(CartModel item) async {
     //i need to find the index of the element on cart
@@ -45,9 +50,14 @@ class CartController extends GetxController {
       model.quantity = model.quantity + 1;
 
       onCart[index] = model;
+      //calculate();
     } else {
       onCart.add(item);
+      calculate();
     }
+    Get.snackbar(
+        "Product Added", "You have added the ${item.productName} to the cart",
+        snackPosition: SnackPosition.BOTTOM, duration: Duration(seconds: 2));
   }
 
   void increase(String id) {
@@ -56,7 +66,9 @@ class CartController extends GetxController {
       var index = onCart.indexWhere((elementd) => elementd.productID == id);
 
       model.quantity = model.quantity + 1;
+      model.p = model.price * model.quantity;
       onCart[index] = model;
+      calculate();
     }
   }
 
@@ -66,6 +78,7 @@ class CartController extends GetxController {
       var index = onCart.indexWhere((elementd) => elementd.productID == id);
 
       model.quantity = model.quantity - 1;
+
       onCart[index] = model;
     }
   }
@@ -85,6 +98,17 @@ class CartController extends GetxController {
     }
   }
 
+  void calculate() {
+    for (int i = 0; i < onCart.length; i++) {
+      totalamount.value = onCart[i].price * onCart[i].quantity;
+      // onCart.forEach((element) {3ww
+      //   totalamount.value = element.price * element.quantity;
+      // });
+
+      print(totalamount.value);
+    }
+  }
+
   void checkOut() {
     // displaySheet();
     makePayment();
@@ -94,7 +118,7 @@ class CartController extends GetxController {
     // calling func on cloud functions
     // create payment intent
     final url = Uri.parse(
-        'https://us-central1-wpbakery-52166.cloudfunctions.net/stripePayment');
+        'https://us-central1-doobie-e582c.cloudfunctions.net/stripePayment');
 
     final response = await http.post(
       url,
@@ -109,6 +133,7 @@ class CartController extends GetxController {
 
     await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
+      merchantDisplayName: "Dee",
       paymentIntentClientSecret: _paymentIntent['paymentIntent'],
       style: ThemeMode.dark,
     ));

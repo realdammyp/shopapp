@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "wpbakery-52166"
-  }
+    "default": "doobie-e582c",
+    "doobie": "doobie-e582c"
+  },
+  "targets": {}
 }

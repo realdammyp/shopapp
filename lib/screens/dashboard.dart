@@ -21,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
               ),
               _bottomNavigationBarItem(
                 icon: CupertinoIcons.sportscourt,
-                label: 'News',
+                label: 'Cart',
               ),
             ],
           ),

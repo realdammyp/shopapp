@@ -24,16 +24,25 @@ class OrderScreen extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    color: Colors.green,
                   ),
                   height: 130,
                   width: 150,
                   child: Column(
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(cartController.onCart[index].productName),
+                          Text(
+                            cartController.onCart[index].productName,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                          Text(
+                            cartController.onCart[index].price.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
                           Column(
                             children: [
                               TextButton(
@@ -60,24 +69,35 @@ class OrderScreen extends StatelessWidget {
               },
             ),
           ),
-          TextButton(
-            onPressed: () {
-              authController.auth.value.authStateChanges().listen((event) {
-                if (event == null) {
-                  //go to checkout as guest or sign in page.
-                  Get.to(() => OnboardScreen());
-                } else {
-                  Get.to(PaymentScreen());
-                }
-              });
-            },
-            child: Text('Checkout'),
+          Obx(
+            () => Text(
+              'Subtotal \$ ${cartController.totalamount.value}',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
           ),
           TextButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
+            onPressed: () {
+              //go to checkout as guest or sign in page.
+              //Get.to(() => PaymentScreen());
+              cartController.makePayment();
+            },
+            child: Text(
+              'Checkout',
+              style: Theme.of(context).textTheme.headline5,
+            ),
+          ),
+          TextButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
             onPressed: () {
               authController.signOut();
             },
-            child: Text('logout'),
+            child: Text(
+              'Logout',
+              style: Theme.of(context).textTheme.headline5,
+            ),
           ),
         ],
       ),

@@ -26,7 +26,7 @@ class MainScreenBody extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: FadeInImage(
-                        placeholder: AssetImage('assets/vm.jpg'),
+                        placeholder: AssetImage('assets/images/FLOWER.jpg'),
                         image: NetworkImage(
                             productController.products[index].imageurl),
                         fit: BoxFit.cover,
@@ -38,7 +38,10 @@ class MainScreenBody extends StatelessWidget {
                     children: [
                       Text(
                         productController.products[index].name.toString(),
-                        style: TextStyle(fontSize: 20.0),
+                        style: TextStyle(fontSize: 15.0),
+                      ),
+                      Text(
+                        '\$  ${productController.products[index].price.toString()}',
                       ),
                       Text('Add to Cart'),
                       GestureDetector(

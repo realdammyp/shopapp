@@ -20,7 +20,7 @@ void main() async {
   Get.put(AuthController());
 
   Stripe.publishableKey =
-      'pk_test_51JhgxcAWXGVYonHxuKIvOfw7ESAr6AKRjTChPD46acWlPzWYbsc4opk9fI8BCPCdpfbQlVNCx59jnkMgp2XeS66500IkqJA8eT';
+      'pk_test_51JwUCQHqBFg5FUkRQFCmEyfJStOxPsQ2fGwS9j3njxBqeqAOK8rGTS6M4I3uQwrQ5n7vdg5TMhZiOrCjrhDyZGPd00e00whAM3';
 
   runApp(MyApp());
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "445307532633",
+    "project_id": "doobie-e582c",
+    "storage_bucket": "doobie-e582c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445307532633:android:35e116a4455b576ea68848",
+        "android_client_info": {
+          "package_name": "com.doobie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445307532633-hmv3l85bf264ugf19jaoveres1c9js23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ-Eaeg5sXWD15ueB6fsg4_BdoxpRg0JU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445307532633-hmv3l85bf264ugf19jaoveres1c9js23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

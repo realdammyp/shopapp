@@ -10,14 +10,16 @@ class ProductController extends GetxController {
   RxBool isloading = false.obs;
   RxString currentdBPath = ''.obs;
 
+  //ProductController(Type orderScreen);
+
   // ignore: must_call_super
   void onInit() {
     // get the products from the database.
-    products.bindStream(Database().getprod('macarons'));
+    products.bindStream(Database().getprod('Flower'));
   }
 
   Future<void> changeCatergory(String path) async {
-     currentdBPath.value = path;
-     products.bindStream(Database().getprod(path));
+    currentdBPath.value = path;
+    products.bindStream(Database().getprod(path));
   }
 }

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:shopapp/controllers/authController.dart';
 import 'package:shopapp/screens/dashboard.dart';
 
-
 class SignIn extends StatelessWidget {
   final AuthController authController = Get.find();
 
@@ -12,7 +11,6 @@ class SignIn extends StatelessWidget {
     return Scaffold(
       body: Container(
         child: Form(
-          
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -29,7 +27,9 @@ class SignIn extends StatelessWidget {
               TextButton(
                 child: Text('Login'),
                 onPressed: () {
-                  authController.signin().then((value) => Get.off(DashboardScreen()));
+                  authController
+                      .signin()
+                      .then((value) => Get.off(DashboardScreen()));
                 },
               )
             ],

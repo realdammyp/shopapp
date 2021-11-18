@@ -18,7 +18,7 @@ class MainScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
-                " Bakery",
+                " Doobie",
                 style: TextStyle(fontSize: 35),
               ),
             ),
@@ -28,21 +28,21 @@ class MainScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Catogory(
-                  name: "Macarons",
+                  name: "Flower",
                   func: () async {
-                    productController.changeCatergory('macarons');
+                    productController.changeCatergory('Flower');
                   },
                 ),
                 Catogory(
-                  name: "Roll Cakes",
+                  name: "Concentrates",
                   func: () {
-                    productController.changeCatergory("rollcakes");
+                    productController.changeCatergory("Concentrates");
                   },
                 ),
                 Catogory(
-                  name: "Cakes",
+                  name: "Edibles",
                   func: () {
-                    productController.changeCatergory("cakes");
+                    productController.changeCatergory("Edibles");
                   },
                 ),
               ],
