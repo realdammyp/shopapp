@@ -1,4 +1,5 @@
 import 'dart:convert';
+//import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -7,12 +8,13 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:get/state_manager.dart';
+import 'package:shopapp/controllers/productController.dart';
 
 class CartModel {
   String productID;
   String productName;
   int quantity;
-  final int price;
+  int price;
   String url;
   String orderPrimaryKey;
 
@@ -24,10 +26,6 @@ class CartModel {
     this.url,
     this.orderPrimaryKey,
   });
-
-  set p(int p) {
-    p = price;
-  }
 }
 
 @override
@@ -38,6 +36,8 @@ class CartController extends GetxController {
   Map<String, dynamic> _paymentIntent;
   String amount = '10000';
   RxInt totalamount = 0.obs;
+
+  ProductController productController = Get.find();
 
   void addtoCart(CartModel item) async {
     //i need to find the index of the element on cart
@@ -50,7 +50,7 @@ class CartController extends GetxController {
       model.quantity = model.quantity + 1;
 
       onCart[index] = model;
-      //calculate();
+      calculate();
     } else {
       onCart.add(item);
       calculate();
@@ -65,10 +65,15 @@ class CartController extends GetxController {
       var model = onCart.firstWhere((elementd) => elementd.productID == id);
       var index = onCart.indexWhere((elementd) => elementd.productID == id);
 
+      var tempmodel =
+          productController.products.firstWhere((product) => product.id == id);
+      var tempPrice = tempmodel.price;
+
       model.quantity = model.quantity + 1;
-      model.p = model.price * model.quantity;
+      // temp = model.price;
+      // temp = model.price * model.quantity;
+      model.price = tempPrice * model.quantity;
       onCart[index] = model;
-      calculate();
     }
   }
 
@@ -100,13 +105,12 @@ class CartController extends GetxController {
 
   void calculate() {
     for (int i = 0; i < onCart.length; i++) {
-      totalamount.value = onCart[i].price * onCart[i].quantity;
-      // onCart.forEach((element) {3ww
-      //   totalamount.value = element.price * element.quantity;
-      // });
-
-      print(totalamount.value);
+      totalamount.value += onCart[i].price * onCart[i].quantity;
+      //onCart.forEach((element) {
+      //totalamount.value = element.price * element.quantity;
     }
+
+    print(totalamount.value);
   }
 
   void checkOut() {

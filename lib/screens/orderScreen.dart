@@ -71,7 +71,7 @@ class OrderScreen extends StatelessWidget {
           ),
           Obx(
             () => Text(
-              'Subtotal \$ ${cartController.totalamount.value}',
+              'Subtotal \$ ${cartController.totalamount}',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
           ),
@@ -81,21 +81,18 @@ class OrderScreen extends StatelessWidget {
             onPressed: () {
               //go to checkout as guest or sign in page.
               //Get.to(() => PaymentScreen());
-              cartController.makePayment();
+              //authController.auth.value.authStateChanges().listen((event) {
+              //if (event == null) {
+              //go to checkout as guest or sign in page.
+              Get.to(() => OnboardScreen());
+              //} else {
+              // Get.to(PaymentScreen());
+              //}
+              //}//);
+              //cartController.makePayment();
             },
             child: Text(
-              'Checkout',
-              style: Theme.of(context).textTheme.headline5,
-            ),
-          ),
-          TextButton(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.lightBlue)),
-            onPressed: () {
-              authController.signOut();
-            },
-            child: Text(
-              'Logout',
+              'Sign in & Continue',
               style: Theme.of(context).textTheme.headline5,
             ),
           ),

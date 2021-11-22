@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopapp/controllers/authController.dart';
 import 'package:shopapp/screens/dashboard.dart';
+import 'package:shopapp/screens/payment_screen.dart';
 
 class SignIn extends StatelessWidget {
   final AuthController authController = Get.find();
@@ -29,7 +30,7 @@ class SignIn extends StatelessWidget {
                 onPressed: () {
                   authController
                       .signin()
-                      .then((value) => Get.off(DashboardScreen()));
+                      .then((value) => Get.off(PaymentScreen()));
                 },
               )
             ],

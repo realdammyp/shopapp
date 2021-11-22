@@ -8,12 +8,15 @@ class AuthController extends GetxController {
   Rx<String> user;
   Rx<TextEditingController> emailController = TextEditingController().obs;
   Rx<TextEditingController> passController = TextEditingController().obs;
+  Rx<TextEditingController> newnameController = TextEditingController().obs;
+  Rx<TextEditingController> newemailController = TextEditingController().obs;
+  Rx<TextEditingController> newpassController = TextEditingController().obs;
 
   Future<void> createUser() async {
     try {
       await auth.value.createUserWithEmailAndPassword(
-          email: emailController.value.text,
-          password: passController.value.text);
+          email: newemailController.value.text,
+          password: newpassController.value.text);
       user.value = auth.value.currentUser.email;
     } catch (e) {
       print(e);
@@ -27,7 +30,11 @@ class AuthController extends GetxController {
           password: passController.value.text);
       print(auth.value.currentUser);
     } catch (e) {
-      print(e);
+      Get.snackbar(
+        "Incorrect email or password",
+        e.message,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 

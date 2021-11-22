@@ -16,6 +16,8 @@ class ProductController extends GetxController {
   void onInit() {
     // get the products from the database.
     products.bindStream(Database().getprod('Flower'));
+    products.bindStream(Database().getprod('Concentrates'));
+    products.bindStream(Database().getprod('Edibles'));
   }
 
   Future<void> changeCatergory(String path) async {
