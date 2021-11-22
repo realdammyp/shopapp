@@ -12,7 +12,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  print('l');
   await Firebase.initializeApp();
   Get.put(ProductController());
   Get.put(CartController());
