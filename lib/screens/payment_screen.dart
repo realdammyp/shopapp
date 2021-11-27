@@ -9,7 +9,7 @@ import 'package:shopapp/screens/mainScreen/widgets/main_screen_body.dart';
 import 'package:shopapp/screens/orderScreen.dart';
 import 'package:shopapp/screens/payment_screen.dart';
 import 'package:shopapp/screens/signIn.dart';
-import 'package:shopapp/screens/onboard_screen.dart';
+//import 'package:shopapp/screens/onboard_screen.dart';
 import '../controllers/authController.dart';
 
 class PaymentScreen extends StatelessWidget {

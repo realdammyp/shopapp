@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:shopapp/controllers/authController.dart';
 import 'package:shopapp/controllers/cartController.dart';
 import 'package:shopapp/controllers/productController.dart';
+import 'package:shopapp/screens/Welcome/welcome_screen.dart';
 import 'package:shopapp/screens/dashboard.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-
+import 'package:shopapp/screens/signIn.dart';
+import 'package:shopapp/screens/constants.dart';
+import 'controllers/bindings/authbinding.dart';
 import 'controllers/dashboardController.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  print('l');
   await Firebase.initializeApp();
   Get.put(ProductController());
   Get.put(CartController());
@@ -30,11 +32,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: AuthBinding(),
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: DashboardScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

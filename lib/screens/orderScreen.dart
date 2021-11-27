@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopapp/controllers/authController.dart';
 import 'package:shopapp/controllers/cartController.dart';
+import 'package:shopapp/screens/Welcome/welcome_screen.dart';
 import 'package:shopapp/screens/dashboard.dart';
 import 'package:shopapp/screens/payment_screen.dart';
 import 'package:shopapp/screens/signIn.dart';
-import 'package:shopapp/screens/onboard_screen.dart';
 
 class OrderScreen extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class OrderScreen extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: Colors.green,
+                    color: Colors.white12,
                   ),
                   height: 130,
                   width: 150,
@@ -84,7 +84,7 @@ class OrderScreen extends StatelessWidget {
               //authController.auth.value.authStateChanges().listen((event) {
               //if (event == null) {
               //go to checkout as guest or sign in page.
-              Get.to(() => OnboardScreen());
+              Get.to(() => WelcomeScreen());
               //} else {
               // Get.to(PaymentScreen());
               //}
@@ -92,7 +92,7 @@ class OrderScreen extends StatelessWidget {
               //cartController.makePayment();
             },
             child: Text(
-              'Sign in & Continue',
+              'Proceed to Check-Out',
               style: Theme.of(context).textTheme.headline5,
             ),
           ),

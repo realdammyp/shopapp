@@ -65,14 +65,14 @@ class CartController extends GetxController {
       var model = onCart.firstWhere((elementd) => elementd.productID == id);
       var index = onCart.indexWhere((elementd) => elementd.productID == id);
 
-      var tempmodel =
-          productController.products.firstWhere((product) => product.id == id);
-      var tempPrice = tempmodel.price;
+      // var tempmodel =
+      //     productController.products.firstWhere((product) => product.id == id);
+      // var tempPrice = tempmodel.price;
 
       model.quantity = model.quantity + 1;
       // temp = model.price;
       // temp = model.price * model.quantity;
-      model.price = tempPrice * model.quantity;
+      model.price = model.price * model.quantity;
       onCart[index] = model;
     }
   }
@@ -104,13 +104,12 @@ class CartController extends GetxController {
   }
 
   void calculate() {
-    for (int i = 0; i < onCart.length; i++) {
-      totalamount.value += onCart[i].price * onCart[i].quantity;
-      //onCart.forEach((element) {
-      //totalamount.value = element.price * element.quantity;
-    }
+    int totam = 0;
 
-    print(totalamount.value);
+    onCart.forEach((element) {
+      totam += element.price;
+    });
+    totalamount.value = totam;
   }
 
   void checkOut() {
